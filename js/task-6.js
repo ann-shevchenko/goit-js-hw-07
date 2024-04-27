@@ -9,17 +9,18 @@ const btnDestroy = document.querySelector("#controls button[data-destroy]");
 const boxesContainer = document.querySelector("#boxes");
 
 function createBoxes(amount) {
-  boxesContainer.innerHTML = ""; 
+  const fragment = document.createDocumentFragment();
 
-  let size = 30;
-  for (let i = 0; i < amount; i++) {
+  for (let i = 0, size = 30; i < amount; i++, size += 10) {
     const box = document.createElement("div");
     box.style.width = `${size}px`;
     box.style.height = `${size}px`;
     box.style.backgroundColor = getRandomHexColor();
-    boxesContainer.appendChild(box);
-    size += 10;
+    fragment.appendChild(box);
   }
+
+  boxesContainer.innerHTML = ""; 
+  boxesContainer.appendChild(fragment);
 }
 
 function pressButton(){

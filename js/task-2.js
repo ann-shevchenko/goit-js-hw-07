@@ -26,6 +26,7 @@ const images = [
 ];
 
 const galleryList = document.querySelector('.gallery');
+const fragment = document.createDocumentFragment();
 galleryList.style.display = "flex";
 galleryList.style.flexWrap = "wrap";
 galleryList.style.gap = "48px 24px";
@@ -42,7 +43,8 @@ images.forEach(element => {
   galleryImage.width = 360;
   galleryImage.height = 300;
 
-  galleryList.appendChild(galleryItem.appendChild(galleryImage));
+  fragment.appendChild(galleryItem.appendChild(galleryImage));
 });
  
+galleryList.appendChild(fragment);
 
